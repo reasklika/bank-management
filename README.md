@@ -1,1 +1,1 @@
-# bank-managment
+# Bank Products Management
