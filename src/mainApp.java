@@ -136,14 +136,14 @@ public class mainApp {
         do{
             System.out.println("1. Insert seller");
             System.out.println("2. Insert Banking Product");
-            System.out.println("3. Insert Banking Product sell");
-            System.out.println("4. Insert new Credit Card move");
-            System.out.println("5. Loans printing");
-            System.out.println("6. Seller's supply calculation");
+            System.out.println("3. Insert new sale of a banking product");
+            System.out.println("4. Insert new Credit Card Transaction");
+            System.out.println("5. Print loans");
+            System.out.println("6. Calculate a seller's supply");
             System.out.println("7. Seller's credit card moves");
-            System.out.println("8. Sellers' supplies calculation");
-            System.out.println("9. Final sellers supply print");
-            System.out.println("10. Load banking product sales and credit card transactions to txt files");
+            System.out.println("8. Calculate all sellers' supplies");
+            System.out.println("9. Print final sellers supply");
+            System.out.println("10. Load banking product sales and credit card transactions into txt files");
             System.out.println("0. Exit");
             System.out.print("> ");
             String answer = in.nextLine();
