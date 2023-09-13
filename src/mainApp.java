@@ -1,7 +1,3 @@
-/*
-Arithmos Omadas: 069
-Arithmoi Mhtrwou: 3210163,3210177,3210181
-*/
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
