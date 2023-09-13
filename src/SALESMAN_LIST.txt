@@ -1,0 +1,18 @@
+
+SALESMAN_LIST 
+{ 
+   SALESMAN 
+   { 
+      CODE 1001 
+      SURNAME "PAPADOPOULOS"
+      NAME "GEORGIOS" 
+      AFM 034537078 
+   } 
+   SALESMAN 
+   { 
+      CODE 1002 
+      SURNAME "ALEXOPOULOU" 
+      NAME "MARIA" 
+      AFM 067348899 
+   } 
+}
