@@ -139,10 +139,10 @@ public class mainApp {
             System.out.println("3. Insert new sale of a banking product");
             System.out.println("4. Insert new Credit Card Transaction");
             System.out.println("5. Print loans");
-            System.out.println("6. Calculate a seller's supply");
+            System.out.println("6. Calculate a seller's commission");
             System.out.println("7. Seller's credit card moves");
-            System.out.println("8. Calculate all sellers' supplies");
-            System.out.println("9. Print final sellers supply");
+            System.out.println("8. Calculate all sellers' commissions");
+            System.out.println("9. Print final sellers commission");
             System.out.println("10. Load banking product sales and credit card transactions into txt files");
             System.out.println("0. Exit");
             System.out.print("> ");
@@ -369,7 +369,7 @@ public class mainApp {
                         for(SalesMan sm: SM){
                             System.out.println(sm);
                         }
-                        System.out.print("\nPlease give the code of the seller you want to calculate the supply:");
+                        System.out.print("\nPlease give the code of the seller you want to calculate the commission:");
                         answer2 = in.nextLine(); 
                         for (SalesMan sm : SM) {
                             if (sm.code.equals(answer2)) {
@@ -382,7 +382,7 @@ public class mainApp {
                         }
                     }
                     if (Salesmen.get(answer2) == null){
-                        System.out.println("The Salesman with code " + answer2 + " does not have still any sales!");
+                        System.out.println("The Salesman " + answer2 + " has not made any sales!");
                     }else{
                         for (BPSale bps: Salesmen.get(answer2)){
                             if (Loans.containsKey(bps.BPCode)){
@@ -390,22 +390,22 @@ public class mainApp {
                                 float sum2 = Loans.get(bps.BPCode).LoanValue;
                                 if (sum2 <= 500000){
                                     sumsup = sum2 * 0.01 + sumsup;
-                                    System.out.printf("The total supply of the loans is %.2f.%n", sum2 * 0.01);
+                                    System.out.printf("The total commission of the loans is %.2f.%n", sum2 * 0.01);
                                 } else if (sum2 <= 2000000){
                                     sumsup = sum2 * 0.02 + sumsup;
-                                    System.out.printf("The total supply of the loans is %.2f.%n", sum2 * 0.02);
+                                    System.out.printf("The total commission of the loans is %.2f.%n", sum2 * 0.02);
                                 }else{
                                     sumsup = sum2 * 0.025 + sumsup;
-                                    System.out.printf("The total supply of the loans is %.2f.%n", sum2 * 0.025);
+                                    System.out.printf("The total commission of the loans is %.2f.%n", sum2 * 0.025);
                                 } 
                             }else{
-                                System.out.printf("The supply of the card with number %s is %.2f.%n", bps.BPCode, CreditCards.get(bps.BPCode).sum * CreditCards.get(bps.BPCode).CommissionRate);
+                                System.out.printf("The commission of the card with number %s is %.2f.%n", bps.BPCode, CreditCards.get(bps.BPCode).sum * CreditCards.get(bps.BPCode).CommissionRate);
                                 sumsup = CreditCards.get(bps.BPCode).sum * CreditCards.get(bps.BPCode).CommissionRate + sumsup;
                             }  
                         }
                     }
                     
-                    System.out.printf("The total supply the seller with code %s is gonna take is %.2f.%n", answer2, sumsup);
+                    System.out.printf("The total commission the seller %s is gonna take is %.2f.%n", answer2, sumsup);
                 }
             }else if(answer.equals("7")){
                 System.out.print("Are you sure of your decision? (1. YES 2. NO) ");
@@ -423,7 +423,7 @@ public class mainApp {
                     System.out.print("\nPlease insert the code of the seller you want to check:");
                     String answer3 = in.nextLine();
                     if (Salesmen.get(answer3) == null){
-                        System.out.println("The Salesman with code " + answer3 + " does not have still any sales!");
+                        System.out.println("The Salesman " + answer3 + " has not made any sales!");
                     }else{
                         for(BPSale bp: Salesmen.get(answer3)){
                             if(CreditCards.containsKey(bp.BPCode)){
@@ -447,7 +447,7 @@ public class mainApp {
                         System.out.println(sm);
                         double sumsup = 0;
                         if (Salesmen.get(sm.code) == null){
-                            System.out.println("The Salesman with code " + sm.code + " does not have still any sales!");
+                            System.out.println("The Salesman " + sm.code + " has not made any sales!");
                         }else{
                             for (BPSale bps: Salesmen.get(sm.code)){
                                 if (Loans.containsKey(bps.BPCode)){
@@ -455,20 +455,20 @@ public class mainApp {
                                     float sum2 = Loans.get(bps.BPCode).LoanValue;
                                     if (sum2 <= 500000){
                                         sumsup = sum2 * 0.01 + sumsup;
-                                        System.out.printf("The total supply of the loans is %.2f.%n", sum2 * 0.01);
+                                        System.out.printf("The total commission of the loans is %.2f.%n", sum2 * 0.01);
                                     } else if (sum2 <= 2000000){
                                         sumsup = sum2 * 0.02 + sumsup;
-                                        System.out.printf("The total supply of the loans is %.2f.%n", sum2 * 0.02);
+                                        System.out.printf("The total commission of the loans is %.2f.%n", sum2 * 0.02);
                                     }else{
                                         sumsup = sum2 * 0.025 + sumsup;
-                                        System.out.printf("The total supply of the loans is %.2f.%n", sum2 * 0.025);
+                                        System.out.printf("The total commission of the loans is %.2f.%n", sum2 * 0.025);
                                     } 
                                 }else{
-                                    System.out.printf("The supply of the card with number %s is %.2f.%n", bps.BPCode, CreditCards.get(bps.BPCode).CommissionRate * CreditCards.get(bps.BPCode).sum);
+                                    System.out.printf("The commission of the card %s is %.2f.%n", bps.BPCode, CreditCards.get(bps.BPCode).CommissionRate * CreditCards.get(bps.BPCode).sum);
                                     sumsup = CreditCards.get(bps.BPCode).sum * CreditCards.get(bps.BPCode).CommissionRate + sumsup;
                                 }  
                             }
-                            System.out.printf("The total supply the seller with code %s is gonna take is %.2f.%n", sm.code, sumsup);
+                            System.out.printf("The total commission the seller %s is gonna take is %.2f.%n", sm.code, sumsup);
                         }
                     }
                 }
@@ -486,31 +486,31 @@ public class mainApp {
                     for(SalesMan sm: SM){
                         double sumsup = 0;
                         if (Salesmen.get(sm.code) == null){
-                            System.out.println("The Salesman with code " + sm.code + " does not have still any sales!");
+                            System.out.println("The Salesman " + sm.code + " has not made any sales!");
                         }else{
                             for (BPSale bps: Salesmen.get(sm.code)){
                                 if (Loans.containsKey(bps.BPCode)){
-                                    System.out.printf("The value of the loan with number %s is %.2f.%n", Loans.get(bps.BPCode).code, Loans.get(bps.BPCode).LoanValue);
+                                    System.out.printf("The value of the loan %s is %.2f.%n", Loans.get(bps.BPCode).code, Loans.get(bps.BPCode).LoanValue);
                                     float sum2 = Loans.get(bps.BPCode).LoanValue;
                                     if (sum2 <= 500000){
                                         sumsup = sum2 * 0.01 + sumsup;
-                                        System.out.printf("The total supply of the loans is %.2f.%n", sum2 * 0.01);
+                                        System.out.printf("The total commission of the loans is %.2f.%n", sum2 * 0.01);
                                     } else if (sum2 <= 2000000){
                                         sumsup = sum2 * 0.02 + sumsup;
-                                        System.out.printf("The total supply of the loans is %.2f.%n", sum2 * 0.02);
+                                        System.out.printf("The total commission of the loans is %.2f.%n", sum2 * 0.02);
                                     }else{
                                         sumsup = sum2 * 0.025 + sumsup;
-                                        System.out.printf("The total supply of the loans is %.2f.%n", sum2 * 0.025);
+                                        System.out.printf("The total commission of the loans is %.2f.%n", sum2 * 0.025);
                                     } 
                                 }else{
-                                    System.out.printf("The supply of the card with number %s is %.2f.%n", bps.BPCode, CreditCards.get(bps.BPCode).CommissionRate * CreditCards.get(bps.BPCode).sum);
+                                    System.out.printf("The commission of the card %s is %.2f.%n", bps.BPCode, CreditCards.get(bps.BPCode).CommissionRate * CreditCards.get(bps.BPCode).sum);
                                     sumsup = CreditCards.get(bps.BPCode).sum * CreditCards.get(bps.BPCode).CommissionRate + sumsup;
                                 }  
                             }
                             sum3 = sum3 + sumsup;
                         }
                     }
-                    System.out.printf("The total supply of all the sellers is %.2f.%n",  sum3);
+                    System.out.printf("The total commission of all the sellers is %.2f.%n",  sum3);
                 }
             }else if (answer.equals("10")){
                 System.out.print("Are you sure of your decision? (1. YES 2. NO) ");
